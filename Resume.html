@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume | Ayan Ahmed</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080710;
+    --panel: #0c0913;
+    --purple: #a100ff;
+    --accent: #b026ff;
+    --text: #f5f3ff;
+    --muted: #b9b0c9;
+    --border: #302642;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(100% - 30px, 1050px);
+    margin: auto;
+}
+
+/* Resume heading */
+.page-heading {
+    text-align: center;
+    padding: 32px 0 22px;
+}
+
+.page-heading small {
+    color: var(--accent);
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.page-heading h1 {
+    font-size: clamp(30px, 5vw, 42px);
+    margin: 7px 0;
+}
+
+.page-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Download button */
+.download-cv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.download-cv a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #a100ff, #6d00cc);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    border: 1px solid #c45cff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #a100ff35;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.download-cv a:hover {
+    background: linear-gradient(135deg, #bd38ff, #8200ff);
+    box-shadow: 0 0 30px #a100ff75;
+    transform: translateY(-3px);
+}
+
+.download-cv a i {
+    font-size: 17px;
+}
+
+/* CV paper */
+.cv {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: 0 auto 50px;
+    background: #ffffff;
+    color: #282532;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 12px 45px #0007;
+}
+
+.cv-header {
+    display: grid;
+    grid-template-columns: 1fr 125px;
+    gap: 22px;
+    align-items: center;
+    padding: 30px 35px;
+    background: #f4f1f8;
+    border-bottom: 3px solid var(--purple);
+}
+
+.cv-header h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    color: #21172c;
+}
+
+.cv-role {
+    font-size: 12px;
+    font-weight: bold;
+    color: #6d28a8;
+    margin: 7px 0 13px;
+}
+
+.cv-contact {
+    font-size: 11px;
+    color: #51495a;
+    display: grid;
+    gap: 4px;
+}
+
+.cv-contact a {
+    color: #6d28a8;
+    overflow-wrap: anywhere;
+}
+
+.cv-photo {
+    width: 120px;
+    height: 145px;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 2px solid #ddd2e9;
+    border-radius: 3px;
+}
+
+.cv-body {
+    padding: 26px 35px 30px;
+}
+
+.cv-section {
+    margin-bottom: 20px;
+}
+
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+
+.cv-section h3 {
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #6d28a8;
+    border-bottom: 1px solid #ddd5e8;
+    padding-bottom: 6px;
+    margin-bottom: 9px;
+}
+
+.cv-section p {
+    font-size: 12px;
+    color: #494451;
+    margin: 3px 0;
+}
+
+/* Skills */
+.cv-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+}
+
+.cv-skills li {
+    padding: 4px 8px;
+    background: #f2edf8;
+    border: 1px solid #e0d5ed;
+    color: #49345f;
+    font-size: 11px;
+    border-radius: 3px;
+}
+
+/* Experience */
+.experience {
+    padding: 10px 12px;
+    border-left: 3px solid #8b35ca;
+    background: #faf8fc;
+}
+
+.experience h4 {
+    font-size: 13px;
+    color: #282532;
+    margin-bottom: 3px;
+}
+
+/* Projects */
+.projects {
+     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.project {
+    position: relative;
+    padding: 10px 11px;
+    border: 1px solid #e3dce9;
+    background: #ffffff;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    break-inside: avoid;
+}
+
+.project-number {
+    display: block;
+    font-size: 9px;
+    color: #8b35ca;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.project h4 {
+    font-size: 12px;
+    color: #282532;
+    margin-bottom: 3px;
+}
+
+.project p {
+    font-size: 11px;
+    color: #655d6c;
+    margin-bottom: 5px;
+}
+
+/* Project links: white background and dark text */
+.cv .projects .project a,
+.cv .projects .project a:visited {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+background: #ffffff !important; 
+    color: #7027ad;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 0;
+    overflow-wrap: anywhere;
+}
+
+.cv .projects .project a:hover {
+    color: #a100ff;
+    text-decoration: underline;
+}
+
+/* Certificate */
+.certificate-box {
+    padding: 10px 12px;
+    background: #faf8fc;
+    border: 1px solid #e4dcea;
+}
+
+.certificate-box strong {
+    font-size: 12px;
+}
+
+.certificate-box p {
+    margin-top: 4px;
+}
+
+.certificate-image {
+    display: block;
+    width: 60%;
+    max-width: 450px;
+    height: auto;
+    margin: 10px auto 0;
+    border: 1px solid #ded6e5;
+}
+
+/* CV footer */
+.cv-footer {
+    text-align: center;
+    padding: 12px 20px;
+    background: #f4f1f8;
+    color: #665c70;
+    font-size: 10px;
+    border-top: 1px solid #e2dbe8;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .download-cv {
+        margin: 22px 0;
+    }
+
+    .download-cv a {
+        width: 100%;
+        max-width: 280px;
+        padding: 13px 20px;
+        font-size: 14px;
+    }
+
+    .cv-header {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 22px;
+    }
+
+    .cv-photo {
+        grid-row: 1;
+        width: 100px;
+        height: 120px;
+    }
+
+    .cv-header h2 {
+        font-size: 27px;
+    }
+
+    .cv-body {
+        padding: 22px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate-image {
+        width: 85%;
+    }
+}
+
+/* Print / Save as PDF */
+@media print {
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    body {
+        background: #ffffff;
+        color: #282532;
+    }
+
+    #navbar,
+    #feeter,
+    .page-heading,
+    .download-cv {
+        display: none !important;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .cv {
+        max-width: none;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .cv-header,
+    .cv-footer,
+    .experience,
+    .certificate-box,
+    .cv-skills li {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .cv-section,
+    .project,
+    .experience,
+    .certificate-box {
+        break-inside: avoid;
+    }
+
+    .cv .projects .project a {
+        color: #49345f;
+        background: #ffffff;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Existing portfolio navbar -->
+<div id="navbar"></div>
+
+<main class="container">
+
+    <div class="page-heading">
+        <small>MY RESUME</small>
+        <h1>Ayan Ahmed</h1>
+        <p>Front-End Developer · On-Page SEO · Chat Support</p>
+    </div>
+
+    <div class="download-cv">
+        <a href="Ayan_Ahmed_CV_with_Projects.pdf"
+           download="Ayan_Ahmed_CV_with_Projects.pdf">
+            <i class="fa-solid fa-download"></i>
+            Download CV
+        </a>
+    </div>
+
+    <article class="cv">
+
+        <header class="cv-header">
+            <div>
+                <h2>Ayan Ahmed</h2>
+                <div class="cv-role">FRONT-END DEVELOPER | ON-PAGE SEO</div>
+
+                <div class="cv-contact">
+                    <span>Karachi, Pakistan</span>
+                    <a href="tel:03159774961">03159774961</a>
+                    <a href="mailto:aayanahmed1821@gmail.com">aayanahmed1821@gmail.com</a>
+                    <a href="https://github.com/ayanop69opmohibbot-gif"
+                       target="_blank" rel="noopener">
+                        GitHub Profile
+                    </a>
+                </div>
+            </div>
+
+            <img src="images/ayan.png" alt="Ayan Ahmed" class="cv-photo">
+        </header>
+
+        <div class="cv-body">
+
+            <section class="cv-section">
+                <h3>Professional Summary</h3>
+                <p>
+                    Entry-level web development candidate focused on front-end
+                    development and on-page SEO. Familiar with HTML, CSS and
+                    JavaScript, with personal website and web application
+                    projects. Also has two months of chat support experience
+                    at Empire Solution.
+                </p>
+            </section>
+
+            <section class="cv-section">
+                <h3>Skills</h3>
+                <ul class="cv-skills">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Front-End Development</li>
+                    <li>On-Page SEO</li>
+                    <li>Social Media Marketing</li>
+                </ul>
+            </section>
+
+            <section class="cv-section">
+                <h3>Work Experience</h3>
+                <div class="experience">
+                    <h4>Chat Support — Empire Solution</h4>
+                    <p>Duration: 2 months</p>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h3>Education</h3>
+                <p><strong>Intermediate</strong></p>
+                <p>Aptech</p>
+            </section>
+
+            <section class="cv-section">
+                <h3>Projects</h3>
+
+                <div class="projects">
+
+                    <div class="project">
+                        <span class="project-number">PROJECT 01</span>
+                        <h4>FandomVerse</h4>
+                        <p>Manga website project.</p>
+                        <a href="https://talibmari110-debug.github.io/sfcfightermen/"
+                           target="_blank" rel="noopener">
+                            View Live Project ↗
+                        </a>
+                    </div>
+
+                    <div class="project">
+                        <span class="project-number">PROJECT 02</span>
+                        <h4>Alberto Watches</h4>
+                        <p>Luxury watch gallery website.</p>
+                        <a href="https://ayanop69opmohibbot-gif.github.io/Alberto-Watches/"
+                           target="_blank" rel="noopener">
+                            View Live Project ↗
+                        </a>
+                    </div>
+
+                    <div class="project">
+                        <span class="project-number">PROJECT 03</span>
+                        <h4>New Parks</h4>
+                        <p>Informational website project.</p>
+                        <a href="https://ayanop69opmohibbot-gif.github.io/new-parks/"
+                           target="_blank" rel="noopener">
+                            View Live Project ↗
+                        </a>
+                    </div>
+
+                    <div class="project">
+                        <span class="project-number">PROJECT 04</span>
+                        <h4>Calculator</h4>
+                        <p>Calculator web application.</p>
+                        <a href="https://ayanop69opmohibbot-gif.github.io/calculator/"
+                           target="_blank" rel="noopener">
+                            View Live Project ↗
+                        </a>
+                    </div>
+
+                    <div class="project">
+                        <span class="project-number">PROJECT 05</span>
+                        <h4>Domo Gym</h4>
+                        <p>Gym and fitness website project.</p>
+                        <a href="https://ayanop69opmohibbot-gif.github.io/domo-gym/"
+                           target="_blank" rel="noopener">
+                            View Live Project ↗
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h3>Certification</h3>
+
+                <div class="certificate-box">
+                    <strong>Social Media Marketing — Digital Skills Center</strong>
+                    <p>One-month course completed.</p>
+                    <p>Certificate date: 06 January 2025</p>
+
+                    <img src="images/image.png"
+                         alt="Social Media Marketing Certificate"
+                         class="certificate-image">
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="cv-footer">
+            Ayan Ahmed · Karachi, Pakistan
+        </footer>
+
+    </article>
+</main>
+
+<!-- Existing portfolio footer -->
+<div id="feeter"></div>
+
+<script type="module">
+import { header, footer } from "./export.js";
+
+document.getElementById("navbar").innerHTML = header;
+document.getElementById("feeter").innerHTML = footer;
+
+/* Footer year */
+const footerYear = document.getElementById("footerYear");
+
+if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+}
+
+/* Visitor count */
+const visitorElement = document.getElementById("visitors");
+
+if (visitorElement) {
+    try {
+        let visits = Number(localStorage.getItem("portfolioVisits") || 0);
+        visits++;
+        localStorage.setItem("portfolioVisits", visits);
+        visitorElement.textContent = visits.toLocaleString();
+    } catch (error) {
+        visitorElement.textContent = "—";
+    }
+}
+
+/* Live date and time */
+function updateClock() {
+    const clock = document.getElementById("clock");
+
+    if (clock) {
+        clock.textContent = new Intl.DateTimeFormat("en-PK", {
+            timeZone: "Asia/Karachi",
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        }).format(new Date());
+    }
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+/* Mobile navbar menu */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("active");
+
+        menuBtn.setAttribute("aria-expanded", String(isOpen));
+
+        menuBtn.innerHTML = isOpen
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+    });
+}
+</script>
+
+</body>
+</html>

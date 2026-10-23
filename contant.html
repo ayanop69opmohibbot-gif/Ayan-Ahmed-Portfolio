@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Me | Ayan Ahmed</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+</head>
+
+<body>
+
+<!-- Portfolio Navbar -->
+<div id="navbar"></div>
+
+<main>
+
+    <section class="contact-hero container">
+        <small>CONTACT ME</small>
+
+        <h1>Let's Start a <span>Conversation.</span></h1>
+
+        <p>
+            Have a project in mind or want to discuss a website?
+            Reach out to me directly through WhatsApp, phone or email.
+        </p>
+    </section>
+
+    <section class="contact-main container">
+
+        <div class="contact-intro">
+            <span class="tag">
+                <i class="fa-solid fa-paper-plane"></i>
+                GET IN TOUCH
+            </span>
+
+            <h2>
+                Let's Build Something
+                <span>Great Together.</span>
+            </h2>
+
+            <p>
+                I'm interested in front-end development, modern websites
+                and on-page SEO projects. Choose your preferred way to
+                contact me, and let's talk about your ideas.
+            </p>
+
+            <div class="availability">
+                <i class="fa-solid fa-circle"></i>
+                Available for project inquiries
+            </div>
+        </div>
+
+        <div class="contact-cards">
+
+            <!-- WhatsApp -->
+            <a class="contact-card whatsapp"
+               href="https://wa.me/923159774961"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <div class="contact-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+
+                <div class="contact-details">
+                    <small>CHAT WITH ME</small>
+                    <h3>WhatsApp</h3>
+                    <p>03159774961</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+            </a>
+
+            <!-- Email -->
+            <a class="contact-card email"
+               href="mailto:aayanahmed1821@gmail.com?subject=Project%20Inquiry">
+
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+                <div class="contact-details">
+                    <small>SEND ME AN EMAIL</small>
+                    <h3>Email Address</h3>
+                    <p>aayanahmed1821@gmail.com</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+            </a>
+
+            <!-- Phone -->
+            <a class="contact-card phone"
+               href="tel:+923159774961">
+
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <div class="contact-details">
+                    <small>CALL ME DIRECTLY</small>
+                    <h3>Phone Number</h3>
+                    <p>03159774961</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-up-right-from-square contact-arrow"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="contact-bottom container">
+        <h2>Prefer Email?</h2>
+
+        <p>
+            Click below to open your email application and send
+            me your project details directly.
+        </p>
+
+        <a class="email-button"
+           href="mailto:aayanahmed1821@gmail.com?subject=Project%20Inquiry">
+
+            <i class="fa-solid fa-envelope"></i>
+            Email Me Now
+        </a>
+    </section>
+
+</main>
+
+<!-- Portfolio Footer -->
+<div id="feeter"></div>
+
+<script type="module">
+import { header, footer } from "./export.js";
+
+document.getElementById("navbar").innerHTML = header;
+document.getElementById("feeter").innerHTML = footer;
+
+/* Footer year */
+const footerYear = document.getElementById("footerYear");
+
+if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+}
+
+/* Visitor count */
+const visitorElement = document.getElementById("visitors");
+
+if (visitorElement) {
+    try {
+        let visits = Number(localStorage.getItem("portfolioVisits") || 0);
+        visits++;
+        localStorage.setItem("portfolioVisits", visits);
+        visitorElement.textContent = visits.toLocaleString();
+    } catch (error) {
+        visitorElement.textContent = "—";
+    }
+}
+
+/* Pakistan date and time */
+function updateClock() {
+    const clock = document.getElementById("clock");
+
+    if (clock) {
+        clock.textContent = new Intl.DateTimeFormat("en-PK", {
+            timeZone: "Asia/Karachi",
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        }).format(new Date());
+    }
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+/* Mobile navbar menu */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("active");
+
+        menuBtn.setAttribute("aria-expanded", String(isOpen));
+
+        menuBtn.innerHTML = isOpen
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+    });
+}
+</script>
+
+</body>
+</html>

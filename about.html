@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Ayan - Front-End Developer</title>
+  <meta name="description" content="Discover Ayan's journey as a front-end developer, web development skills, and projects.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .about-page {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: #080710;
+    }
+
+    .about-hero {
+      position: relative;
+      padding: 85px 7% 75px;
+      background:
+        radial-gradient(ellipse at 12% 25%, #8b2cff30, transparent 42%),
+        radial-gradient(ellipse at 90% 75%, #4511a52b, transparent 40%);
+    }
+
+    .about-hero::after {
+      content: "";
+      position: absolute;
+      top: 70px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: #a100ff20;
+      filter: blur(85px);
+      pointer-events: none;
+    }
+
+    .about-hero-container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 65px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid #b026ff55;
+      border-radius: 30px;
+      background: #a100ff12;
+      color: #d6a0ff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-tag i {
+      color: #c45cff;
+    }
+
+    .about-intro h1 {
+      margin: 23px 0 17px;
+      font-size: clamp(44px, 5.7vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .about-intro h1 span {
+      color: transparent;
+      background: linear-gradient(90deg, #e0a0ff, #a34bff, #c87aff);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .about-subtitle {
+      margin-bottom: 20px;
+      color: #e5d8f5;
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 600;
+    }
+
+    .about-subtitle span {
+      color: #c27bff;
+    }
+
+    .about-intro > p {
+      max-width: 570px;
+      color: #aaa6bb;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .about-hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 29px;
+    }
+
+    .about-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 13px 21px;
+      border: 1px solid #a33bff;
+      border-radius: 9px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .about-hero-btn.primary {
+      border-color: transparent;
+      background: linear-gradient(110deg, #b026ff, #7426e8);
+      box-shadow: 0 8px 25px #8b2cff28;
+    }
+
+    .about-hero-btn.secondary {
+      background: #ffffff06;
+    }
+
+    .about-hero-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px #a100ff35;
+    }
+
+    .about-visual {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      justify-self: center;
+    }
+
+    .about-visual-glow {
+      position: absolute;
+      inset: 15%;
+      border-radius: 50%;
+      background: #9d32ff60;
+      filter: blur(75px);
+    }
+
+    .about-visual-frame {
+      position: relative;
+      padding: 10px;
+      border: 1px solid #b44cff80;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #b026ff35, #151020 55%, #6021a755);
+      box-shadow: 0 20px 65px #0007, 0 0 35px #a100ff15;
+    }
+
+    .about-visual-frame::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 30px;
+      width: 70px;
+      height: 3px;
+      border-radius: 10px;
+      background: #d78aff;
+      box-shadow: 0 0 15px #b026ff;
+    }
+
+    .about-visual-frame img {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border-radius: 16px;
+      background: #100b1b;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about-floating-card {
+      position: absolute;
+      right: -25px;
+      bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 17px;
+      border: 1px solid #a34bff65;
+      border-radius: 12px;
+      background: #100b1bf2;
+      box-shadow: 0 12px 35px #0006;
+      backdrop-filter: blur(12px);
+    }
+
+    .about-floating-card > i {
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      border-radius: 10px;
+      background: #a100ff25;
+      color: #d78aff;
+    }
+
+    .about-floating-card strong,
+    .about-floating-card small {
+      display: block;
+    }
+
+    .about-floating-card strong {
+      font-size: 13px;
+    }
+
+    .about-floating-card small {
+      margin-top: 3px;
+      color: #aaa6bb;
+      font-size: 11px;
+    }
+
+    .about-section {
+      padding: 75px 7%;
+    }
+
+    .about-section.journey {
+      background: #0b0913;
+    }
+
+    .about-section-container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .about-section-heading {
+      margin-bottom: 35px;
+    }
+
+    .about-section-heading h2 {
+      margin: 13px 0 10px;
+      font-size: clamp(30px, 4vw, 43px);
+      line-height: 1.2;
+    }
+
+    .about-section-heading h2 span {
+      color: #b026ff;
+    }
+
+    .about-section-heading > p {
+      max-width: 620px;
+      color: #aaa6bb;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .journey-card {
+      display: grid;
+      grid-template-columns: 65px 1fr;
+      gap: 22px;
+      padding: 27px;
+      border: 1px solid #39234e;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #171020, #0d0a15);
+      transition: .3s;
+    }
+
+    .journey-card:hover {
+      border-color: #a34bff;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px #0003;
+    }
+
+    .journey-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border: 1px solid #a34bff55;
+      border-radius: 15px;
+      background: #a100ff1c;
+      color: #d08aff;
+      font-size: 23px;
+    }
+
+    .journey-card h3 {
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .journey-card p {
+      color: #aaa6bb;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .journey-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: #c27bff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .about-skill {
+      padding: 21px 12px;
+      border: 1px solid #39234e;
+      border-radius: 13px;
+      background: linear-gradient(145deg, #151020, #0d0a15);
+      text-align: center;
+      transition: .3s;
+    }
+
+    .about-skill:hover {
+      transform: translateY(-5px);
+      border-color: #b026ff;
+      background: #1b1029;
+    }
+
+    .about-skill i {
+      margin-bottom: 12px;
+      color: #c27bff;
+      font-size: 25px;
+    }
+
+    .about-skill h3 {
+      font-size: 13px;
+    }
+
+    .about-skill p {
+      margin-top: 5px;
+      color: #9189a4;
+      font-size: 11px;
+    }
+
+    .about-achievements {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .achievement-card {
+      padding: 24px 20px;
+      border: 1px solid #39234e;
+      border-radius: 14px;
+      background: #110c1b;
+    }
+
+    .achievement-card i {
+      margin-bottom: 16px;
+      color: #c27bff;
+      font-size: 24px;
+    }
+
+    .achievement-card h3 {
+      margin-bottom: 9px;
+      font-size: 16px;
+    }
+
+    .achievement-card p {
+      color: #aaa6bb;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .about-bottom-cta {
+      padding: 65px 7%;
+      background: radial-gradient(ellipse at center, #6720a52d, transparent 70%);
+      text-align: center;
+    }
+
+    .about-bottom-cta h2 {
+      margin: 15px 0 12px;
+      font-size: clamp(29px, 4vw, 43px);
+    }
+
+    .about-bottom-cta h2 span {
+      color: #bd63ff;
+    }
+
+    .about-bottom-cta p {
+      margin-bottom: 25px;
+      color: #aaa6bb;
+      font-size: 14px;
+    }
+
+    .about-page-footer {
+      padding: 22px 7%;
+      border-top: 1px solid #39234e;
+      color: #aaa6bb;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .about-page-footer span {
+      color: #c27bff;
+    }
+
+    @media (max-width: 900px) {
+      .about-hero-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .about-intro {
+        text-align: center;
+      }
+
+      .about-intro > p {
+        margin: auto;
+      }
+
+      .about-hero-buttons {
+        justify-content: center;
+      }
+
+      .about-visual {
+        max-width: 340px;
+      }
+
+      .about-visual-frame img {
+        height: 390px;
+      }
+
+      .about-skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-hero,
+      .about-section {
+        padding: 55px 6%;
+      }
+
+      .about-intro h1 {
+        font-size: 45px;
+        letter-spacing: -1px;
+      }
+
+      .about-intro > p {
+        font-size: 13px;
+      }
+
+      .about-hero-buttons {
+        flex-direction: column;
+      }
+
+      .about-hero-btn {
+        width: 100%;
+      }
+
+      .about-visual {
+        max-width: 290px;
+      }
+
+      .about-visual-frame img {
+        height: 350px;
+      }
+
+      .about-floating-card {
+        right: -9px;
+        bottom: 20px;
+        padding: 10px 12px;
+      }
+
+      .journey-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 22px;
+      }
+
+      .about-skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-achievements {
+        grid-template-columns: 1fr;
+      }
+
+      .about-bottom-cta {
+        padding: 55px 6%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-hero-btn,
+      .journey-card,
+      .about-skill {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+   <!-- navbar -->
+ <div id="navbar">
+
+ </div>
+    <!-- navbar end  -->
+
+  <main class="about-page">
+
+    <!-- Introduction -->
+    <section class="about-hero">
+      <div class="about-hero-container">
+
+        <div class="about-intro">
+          <div class="about-tag">
+            <i class="fa-solid fa-sparkles"></i>
+            Get to know me
+          </div>
+
+          <h1>Hey, I'm Ayan.<br><span>I Build for the Web.</span></h1>
+
+          <div class="about-subtitle">
+            Front-End Developer <span>•</span> Creative Thinker
+          </div>
+
+          <p>
+            I turn ideas into modern, responsive and user-friendly websites.
+            I enjoy creating clean layouts, attractive interfaces and interactive
+            experiences using HTML, CSS, JavaScript, jQuery and Bootstrap.
+            I'm always learning, experimenting and improving with every project I build.
+          </p>
+
+          <div class="about-hero-buttons">
+            <a href="index.html#contact" class="about-hero-btn primary">
+              Let's Work Together <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="index.html#projects" class="about-hero-btn secondary">
+              <i class="fa-solid fa-code"></i> View My Projects
+            </a>
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <div class="about-visual-glow"></div>
+
+          <div class="about-visual-frame">
+            <img src="images/ayan.png" alt="Ayan - Front-End Developer">
+          </div>
+
+          <div class="about-floating-card">
+            <i class="fa-solid fa-laptop-code"></i>
+            <div>
+              <strong>Ayan</strong>
+              <small>Front-End Developer</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="about-section journey">
+      <div class="about-section-container">
+
+        <div class="about-section-heading">
+          <span class="about-tag"><i class="fa-solid fa-route"></i> My journey</span>
+          <h2>Learning. Building. <span>Growing.</span></h2>
+          <p>
+            My journey is about learning web technologies and applying them
+            through practical projects, one step at a time.
+          </p>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-icon">
+            <i class="fa-solid fa-terminal"></i>
+          </div>
+
+          <div>
+            <span class="journey-label">My developer journey</span>
+            <h3>From Learning Code to Building Websites</h3>
+            <p>
+              I started developing my skills with HTML and CSS, then moved into
+              JavaScript and other front-end tools to make websites more
+              interactive. Building projects has helped me practise responsive
+              design, improve layouts and understand how different parts of a
+              website work together. I continue to learn and take on new challenges
+              to become a better developer.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="about-section">
+      <div class="about-section-container">
+
+        <div class="about-section-heading">
+          <span class="about-tag"><i class="fa-solid fa-code"></i> My toolkit</span>
+          <h2>Tools I <span>Work With.</span></h2>
+          <p>Technologies and skills I use to create modern web experiences.</p>
+        </div>
+
+        <div class="about-skills-grid">
+          <div class="about-skill">
+            <i class="fa-brands fa-html5"></i>
+            <h3>HTML5</h3>
+            <p>Page structure</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-brands fa-css3-alt"></i>
+            <h3>CSS3</h3>
+            <p>Styling & layouts</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-brands fa-js"></i>
+            <h3>JavaScript</h3>
+            <p>Web interactions</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-solid fa-code"></i>
+            <h3>jQuery</h3>
+            <p>DOM interactions</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-brands fa-bootstrap"></i>
+            <h3>Bootstrap</h3>
+            <p>Responsive UI</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-brands fa-github"></i>
+            <h3>Git & GitHub</h3>
+            <p>Version control</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-solid fa-file-code"></i>
+            <h3>Json</h3>
+            <p>Create Api</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <h3>Responsive Design</h3>
+            <p>Mobile-friendly pages</p>
+          </div>
+
+          <div class="about-skill">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <h3>On-Page SEO</h3>
+            <p>Page optimization</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="about-section journey">
+      <div class="about-section-container">
+
+        <div class="about-section-heading">
+          <span class="about-tag"><i class="fa-solid fa-star"></i> My achievements</span>
+          <h2>Progress Through <span>Practice.</span></h2>
+          <p>Practical milestones from learning, building and improving my work.</p>
+        </div>
+
+        <div class="about-achievements">
+          <div class="achievement-card">
+            <i class="fa-solid fa-globe"></i>
+            <h3>Live Website Projects</h3>
+            <p>Built and published website projects online to practise real-world layouts and user interfaces.</p>
+          </div>
+
+          <div class="achievement-card">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <h3>Responsive Layouts</h3>
+            <p>Practised adapting website layouts for different screen sizes and devices.</p>
+          </div>
+
+          <div class="achievement-card">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Continuous Learning</h3>
+            <p>Kept developing my front-end skills through hands-on coding and project work.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="about-bottom-cta">
+      <span class="about-tag"><i class="fa-regular fa-paper-plane"></i> Have an idea?</span>
+      <h2>Let's Build Something <span>Great.</span></h2>
+      <p>Have a website project in mind? I'd love to hear about it.</p>
+
+      <a href="contant.html" class="about-hero-btn primary">
+        Contact Me <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- footer -->
+<div id="feeter">
+
+</div>
+<!-- footer end -->
+
+
+<script type="module">
+    import { header, footer } from "./export.js";
+
+    document.getElementById("navbar").innerHTML = header;
+    document.getElementById("feeter").innerHTML = footer;
+
+    const footerYear = document.getElementById("footerYear");
+    if (footerYear) {
+        footerYear.textContent = new Date().getFullYear();
+    }
+
+    const script = document.createElement("script");
+    script.src = "script.js";
+    document.body.appendChild(script);
+</script>
+
+</body>
+</html>
